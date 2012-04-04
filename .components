@@ -1,0 +1,8 @@
+---
+:orm: activerecord
+:test: shoulda
+:mock: none
+:script: none
+:renderer: haml
+:stylesheet: less
+:admin_renderer: haml

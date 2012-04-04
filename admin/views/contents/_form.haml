@@ -1,0 +1,24 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+
+.group
+  =f.label :category_id
+  =f.error_message_on :category_id
+  =f.select :category_id, :collection => @categories, :fields => [:name, :id], :include_blank => 'None'
+
+.group
+  =f.label :body
+  =f.error_message_on :body
+  ~f.text_area :body, :class => :text_area
+
+.group
+  =f.label :snac, :caption => "Council"
+  =f.error_message_on :snac
+  =f.select :snac, :collection => @councils, :fields => [:name, :snac], :include_blank => 'None'
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:contents, :index)}';return false", :class => :button

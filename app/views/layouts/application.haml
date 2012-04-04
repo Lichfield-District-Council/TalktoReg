@@ -1,0 +1,61 @@
+!!!
+%html
+	%head
+		%title= [@title, "Talk to Reg"].compact.join(" | ")
+		= stylesheet_link_tag 'style', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700'
+		= javascript_include_tag 'jquery', 'jquery-ujs', 'geo', 'bootstrap-collapse', 'bootstrap-modal'
+		= yield_content :include
+	%body
+		#wrapper
+			.container
+				%header#header.row
+					%h1
+						%a{:href => '/'}
+							Talk to Reg
+					%p.tagline
+						Need help? You're one click away from assured advice
+		
+				#main.row
+					.span12#inner
+						= yield
+				
+				%nav{"role" => "navigation"}
+					%ul
+						%li
+							%a{:href => "/"}
+								Home
+						%li
+							%a{:href => "/"}
+								Options
+						%li
+							%a{:href => "/"}
+								Categories
+						%li
+							%a{:href => "/"}
+								About
+						%li
+							%a{:href => "/"}
+								Help
+						%li
+							%a{:href => "/"}
+								Contact
+			%footer
+				%ul
+					%li
+						%a{:href => "/"}
+							About Reg
+					%li
+						%a{:href => "/"}
+							Terms and Conditions
+					%li
+						%a{:href => "/"}
+							For Councils
+					%li
+						%a{:href => "/"}
+							Report a Problem
+				
+				%p 
+					email:
+					%a{:href => "mailto:info@talktoreg.co.uk"}
+						info@talktoreg.co.uk
+					= " | tel: 01543 308779"

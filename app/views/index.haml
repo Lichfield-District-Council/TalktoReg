@@ -1,0 +1,49 @@
+.hero-unit
+	= image_tag 'people.png', :alt => ''
+	%h1 Welcome
+	%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat sollicitudin est quis fringilla. Donec adipiscing, nulla eget suscipit pretium, ante velit accumsan dui, ut consectetur felis neque in nibh. Integer arcu massa, accumsan eu feugiat at, lacinia vitae velit. Fusce felis sapien, scelerisque et blandit ac.
+	
+%form.span8{:action => 'search', :method => 'get', :id => 'homeform'}
+	%fieldset
+		%legend
+			Enter your business postcode
+		
+		.control-group
+			%input{:type => 'text', :name => 'postcode'}
+		
+			%p#detect.hidden
+				%a#geo{:href => '/detect'}
+					or detect my location
+		%p#submit	
+			%button{:class => 'btn btn-large btn-primary', :type => 'submit'}
+				Submit
+				
+:javascript
+	$('document').ready(function() {
+		if (geo_position_js.init()) {
+			$('#detect').removeClass('hidden');
+			
+			$("#geo").click(function(e) {
+				e.preventDefault();
+				$('#detect').append('<img src="http://www2.lichfielddc.gov.uk/myarea/images/loading.gif" alt="" align="bottom" />');
+				geo_position_js.getCurrentPosition(function(pos) {
+					$('#detect img').remove();
+	                var latitude = pos.coords.latitude;
+	                var longitude = pos.coords.longitude;
+	                location.href = '/search?lat=' + latitude + '&lng=' + longitude;
+	            	}, function(err) {
+	                $('.geo img').remove();
+	                if (err.code == 1) { // User said no
+	                } else if (err.code == 2) { // No position
+	                    $('#detect').html("Could not look up location");
+	                } else if (err.code == 3) { // Too long
+	                    $('#detect').html("No result returned");
+	                } else { // Unknown
+	                    $('#detect').html("Unknown error");
+	                }
+	            }, {
+	                timeout: 10000
+	            });
+			});
+		}	
+	});

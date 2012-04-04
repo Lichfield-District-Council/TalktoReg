@@ -1,0 +1,24 @@
+%p
+	%strong
+		Named contact:
+	= @contact.contact
+
+%p
+	%strong
+		Address:
+	= simple_format(@contact.address)
+
+%p
+	%strong
+		Tel:
+	= @contact.tel
+
+%p
+	%strong
+		Email:
+	= mail_to @contact.email, @contact.email
+	
+%p
+	%strong
+		Website:
+	= link_to @contact.website, @contact.website

@@ -1,0 +1,15 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:contacts, :index)
+      %li=link_to pat(:new), url(:contacts, :new)
+      %li.active=link_to pat(:edit), url(:contacts, :edit, :id => @contacts.id)
+  .content
+    %h2.title
+      =pat(:edit)
+      =mt(:contacts)
+    .inner
+      -form_for :contacts, url(:contacts, :update, :id => @contacts.id), :method => :put, :class => :form do |f|
+        =partial "contacts/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")
