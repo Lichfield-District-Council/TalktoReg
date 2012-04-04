@@ -20,6 +20,10 @@ gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'mysql2'
 
+group :production do
+ gem 'pg'
+end
+
 # Test requirements
 gem 'shoulda', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"

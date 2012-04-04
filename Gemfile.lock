@@ -66,6 +66,7 @@ GEM
     padrino-mailer (0.10.6)
       mail (~> 2.3.0)
       padrino-core (= 0.10.6)
+    pg (0.13.2)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-less (3.0.2)
@@ -113,6 +114,7 @@ DEPENDENCIES
   less
   mysql2
   padrino (= 0.10.6)
+  pg
   rack-less
   rack-test
   rake
