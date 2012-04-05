@@ -12,10 +12,7 @@
 
 	- @categories.each do |category|
 		%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}"}
-			= image_tag("type#{category.id}.png", :alt => "", :id => "type")
-			= image_tag("arrowleft.png", :alt => "", :id => "arrow")
-			%h3
-				= category.name
+			= category.name
 			%p
 				= category.subtitle
 		%dd{"class" => "collapse", "id" => "q#{category.id}"}
