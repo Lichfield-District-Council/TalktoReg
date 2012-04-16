@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-collapse.js v2.0.2
+ * bootstrap-collapse.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ============================================================ */
+
 
 !function( $ ){
 
@@ -74,9 +75,7 @@
         [dimension](size || 'auto')
         [0].offsetWidth
 
-      this.$element[size ? 'addClass' : 'removeClass']('collapse')
-
-      return this
+      this.$element.addClass('collapse')
     }
 
   , transition: function ( method, startEvent, completeEvent ) {
@@ -135,4 +134,5 @@
     })
   })
 
-}( window.jQuery );
+}( window.jQuery )
+;
