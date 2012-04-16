@@ -3,7 +3,9 @@
 	%head
 		%title= [@title, "Talk to Reg"].compact.join(" | ")
 		= stylesheet_link_tag 'style', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700'
-		= javascript_include_tag 'jquery', 'jquery-ujs', 'geo', 'bootstrap-collapse', 'bootstrap-modal'
+		-#= javascript_include_tag 'jquery', 'jquery-ujs', 'geo', 'bootstrap-collapse', 'bootstrap-modal'
+		= javascript_include_tag 'http://lichfield-001.vm.brightbox.net/assets/application-0046381cfe76caa18e912d4e7bcd9610.js'
+		= javascript_include_tag 'geo'
 		= yield_content :include
 		%meta{:name => "viewport", :content => "width=device-width,minimum-scale=1.0 maximum-scale=1.0"}
 	%body
