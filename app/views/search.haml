@@ -2,11 +2,9 @@
 	= image_tag 'people.png', :alt => ''
 	- if @councils.include? 'county'
 		%h2= "Your councils are #{@councils["county"]["name"]} and #{@councils["council"]["name"]}"
-		%p Your business is based in a two-tier area, which means some services are provided by a district council (usually the council which empties the bins, carries out food safety inspections etc), and a county council (usually the council which looks after education, highways, social services etc).
-		%p Some services may also be looked after by central government.
 	- else
 		%h2= "Your council is #{@councils["council"]["name"]}"
-		%p See below to find out what services are provided in your area. Some services may be provided by different areas of government.
+	%p See below to find out what services are provided in your area. Some services may be provided by different areas of government.
 
 %dl#types
 
@@ -21,27 +19,26 @@
 		%dd{"class" => "collapse", "id" => "q#{category.id}"}
 			%div.ddinner
 				= image_tag("arrowdown.png", :alt => "", :id => "downarrow")
-				- if @contents[category.id].count > 0
-					%ul.tips
-						- @contents[category.id].each do |tip|
+				- if @contacts[category.id].count > 0
+					#contacts
+						%h3
+							Contacts
+						%ul
+							- @contacts[category.id].each do |contact|
+								%li
+									%a{"data-toggle" => "modal", "href" => "#tip#{contact.id}"}= contact.name
+									
+									.modal.hide{:id => "tip#{contact.id}"}
+										.modal-header
+											%a.close{"data-dismiss" => "modal"}
+												x
+											= contact.name
+										.modal-body
+											- @contact = contact
+											= partial 'contact'
+				#contents
+					- @contents[category.id].each do |tip|
+						%ul
 							%li
-								%a{"data-toggle" => "modal", "href" => "#tip#{tip.id}"}= tip.title
-								
-								.modal.hide{:id => "tip#{tip.id}"}
-									.modal-header
-										%a.close{"data-dismiss" => "modal"}
-											x
-										= tip.title
-									.modal-body
-										= tip.body
-				- if @contacts[category.id].count == 1
-					- @contact = @contacts[category.id][0]
-					= partial 'contact'
-				- else
-					%ul.bodies
-						- @contacts[category.id].each do |body|
-							- @contact = body
-							%li
-								%h4
-									= @contact.name	
-								= partial 'contact'
+								%h3= tip.title
+								= tip.body
