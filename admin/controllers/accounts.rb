@@ -7,6 +7,7 @@ Admin.controllers :accounts do
 
   get :new do
     @account = Account.new
+    @councils = Council.all
     render 'accounts/new'
   end
 
@@ -21,11 +22,14 @@ Admin.controllers :accounts do
   end
 
   get :edit, :with => :id do
+  	redirect options.login_page if current_account.id != params[:id].to_i && current_account.role != "admin"
     @account = Account.find(params[:id])
+    @councils = Council.all
     render 'accounts/edit'
   end
 
   put :update, :with => :id do
+  	redirect options.login_page if current_account.id != params[:id].to_i && current_account.role != "admin"
     @account = Account.find(params[:id])
     if @account.update_attributes(params[:account])
       flash[:notice] = 'Account was successfully updated.'

@@ -1,0 +1,37 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:subcategories, :index)
+      %li=link_to pat(:new), url(:subcategories, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:subcategories)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:subcategory, :id)
+          %th=mat(:subcategory, :title)
+          %th=mat(:subcategory, :body)
+          %th=mat(:subcategory, :category_id)
+          %th=mat(:subcategory, :snac)
+          %th=mat(:subcategory, :created_at)
+          %th=mat(:subcategory, :updated_at)
+          %th.last="&nbsp;"
+        -@subcategories.each do |subcategory|
+          %tr
+            %td.first=subcategory.id
+            %td=subcategory.title
+            %td=subcategory.body
+            %td=subcategory.category_id
+            %td=subcategory.snac
+            %td=subcategory.created_at
+            %td=subcategory.updated_at
+            %td.last
+              =button_to pat(:edit), url(:subcategories, :edit, :id => subcategory.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:subcategories, :destroy, :id => subcategory.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

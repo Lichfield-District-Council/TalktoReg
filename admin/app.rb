@@ -33,8 +33,16 @@ class Admin < Padrino::Application
   end
 
   access_control.roles_for :admin do |role|
-    role.project_module :contents, '/contents'
+    role.project_module :subcategories, '/subcategories'
     role.project_module :contacts, '/contacts'
     role.project_module :accounts, '/accounts'
   end
+  
+  access_control.roles_for :editor do |role|
+    role.project_module :subcategories, '/subcategories'
+    role.project_module :contacts, '/contacts'
+    role.allow "/accounts/edit"
+    role.allow "/accounts/update"
+  end
+  
 end

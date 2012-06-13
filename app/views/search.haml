@@ -4,7 +4,7 @@
 		%h2= "Your councils are #{@councils["county"]["name"]} and #{@councils["council"]["name"]}"
 	- else
 		%h2= "Your council is #{@councils["council"]["name"]}"
-	%p See below to find out what services are provided in your area. Some services may be provided by different areas of government.
+	%p Choose from the topics below to find the best person to speak to:
 
 %dl#types
 
@@ -20,25 +20,6 @@
 			%div.ddinner
 				= image_tag("arrowdown.png", :alt => "", :id => "downarrow")
 				- if @contacts[category.id].count > 0
-					#contacts
-						%h3
-							Contacts
-						%ul
-							- @contacts[category.id].each do |contact|
-								%li
-									%a{"data-toggle" => "modal", "href" => "#tip#{contact.id}"}= contact.name
-									
-									.modal.hide{:id => "tip#{contact.id}"}
-										.modal-header
-											%a.close{"data-dismiss" => "modal"}
-												x
-											= contact.name
-										.modal-body
-											- @contact = contact
-											= partial 'contact'
-				#contents
-					- @contents[category.id].each do |tip|
-						%ul
-							%li
-								%h3= tip.title
-								= tip.body
+					- @contacts[category.id].each do |contact|
+						- @contact = contact
+						= partial 'contact'

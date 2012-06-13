@@ -22,23 +22,26 @@ class Talktoregnew < Padrino::Application
 	 
 	 @categories = Categories.all
 	 @contacts = Array.new
-	 @contents = Array.new
+	 @subcategories = Array.new
 	 
 	 @categories.each do |category|
-	 	contacts = Contacts.where(:category_id => category.id, :snac => @councils["council"]["id"])
+	 	contacts = Contacts.where(:category_id => category.id, :subcategory_id => nil, :snac => @councils["council"]["id"])
 	 	
 	 	@contacts[category.id] = Array.new
 	 	
 	 	contacts.each do |contact|
+	 		if contact.name.length == 0
+	 			contact.name = "Contact"
+	 		end
 			@contacts[category.id] << contact
 	 	end
 
-	 	contents = Content.where(:category_id => category.id, :snac => @councils["council"]["id"])
+	 	subcategories = Subcategory.where(:category_id => category.id, :snac => @councils["council"]["id"])
 	 	
-	 	@contents[category.id] = Array.new
+	 	@subcategories[category.id] = Array.new
 	 	
-	 	contents.each do |content|
-			@contents[category.id] << content
+	 	subcategories.each do |content|
+			@subcategories[category.id] << content
 	 	end
 
 	 end

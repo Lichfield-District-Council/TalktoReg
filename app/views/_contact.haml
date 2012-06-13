@@ -1,19 +1,26 @@
-%p
-	%strong
-		Address:
-	= simple_format(@contact.address)
-
-%p
-	%strong
-		Tel:
-	= @contact.tel
-
-%p
-	%strong
-		Email:
-	= mail_to @contact.email, @contact.email
+.contact
+	- unless @contact.name.nil?
+		%p
+			%strong
+				Name:
+			= @contact.name
 	
-%p
-	%strong
-		Website:
-	= link_to @contact.website, @contact.website
+	%p
+		%strong
+			Address:
+		= @contact.address
+			
+	%p
+		%strong
+			Tel:
+		= @contact.tel
+	
+	%p
+		%strong
+			Email:
+		= mail_to @contact.email, @contact.email
+		
+	%p
+		%strong
+			Website:
+		= link_to @contact.website, @contact.website

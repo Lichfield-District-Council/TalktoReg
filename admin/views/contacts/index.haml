@@ -12,33 +12,11 @@
         %tr
           %th.first=mat(:contacts, :id)
           %th=mat(:contacts, :name)
-          %th=mat(:contacts, :address)
-          %th=mat(:contacts, :tel)
-          %th=mat(:contacts, :email)
-          %th=mat(:contacts, :website)
-          %th=mat(:contacts, :contact)
-          %th=mat(:contacts, :hours)
-          %th=mat(:contacts, :howto)
-          %th=mat(:contacts, :snac)
-          %th=mat(:contacts, :category_id)
-          %th=mat(:contacts, :created_at)
-          %th=mat(:contacts, :updated_at)
           %th.last="&nbsp;"
         -@contacts.each do |contacts|
           %tr
             %td.first=contacts.id
             %td=contacts.name
-            %td=contacts.address
-            %td=contacts.tel
-            %td=contacts.email
-            %td=contacts.website
-            %td=contacts.contact
-            %td=contacts.hours
-            %td=contacts.howto
-            %td=contacts.snac
-            %td=contacts.category_id
-            %td=contacts.created_at
-            %td=contacts.updated_at
             %td.last
               =button_to pat(:edit), url(:contacts, :edit, :id => contacts.id), :method => :get, :class => :button_to
               ="|"

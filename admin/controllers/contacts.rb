@@ -1,13 +1,15 @@
 Admin.controllers :contacts do
 
   get :index do
-    @contacts = Contacts.all
+  	if current_account.role == "admin"
+	    @contacts = Contacts.all
+	else
+		@contacts = Contacts.where(:snac => current_account.snac)
+	end
     render 'contacts/index'
   end
 
   get :new do
-  	@categories = Categories.all
-  	@councils = Council.all
     @contacts = Contacts.new
     render 'contacts/new'
   end
@@ -23,8 +25,7 @@ Admin.controllers :contacts do
   end
 
   get :edit, :with => :id do
-    @contacts = Contacts.find(params[:id])
-    @categories = Categories.all
+  	@contacts = Contacts.find(params[:id])
     @councils = Council.all
     render 'contacts/edit'
   end
