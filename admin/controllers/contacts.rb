@@ -10,6 +10,11 @@ Admin.controllers :contacts do
   end
 
   get :new do
+  	if current_account.role == "editor"
+  		@snac = current_account.snac
+  	else
+  		@snac = "all"
+  	end
     @contacts = Contacts.new
     render 'contacts/new'
   end
@@ -25,8 +30,12 @@ Admin.controllers :contacts do
   end
 
   get :edit, :with => :id do
+  	if current_account.role == "editor"
+  		@snac = current_account.snac
+  	else
+  		@snac = "all"
+  	end
   	@contacts = Contacts.find(params[:id])
-    @councils = Council.all
     render 'contacts/edit'
   end
 

@@ -1,25 +1,29 @@
 #block-text.block
-  .content
-    %h2.title Dashboard
-    .inner
-      %p.first
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        %span.hightlight
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      %p
-        %span.small
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-      %p
-        %span.gray
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-      %hr
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        %span.hightlight
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	.content
+		%h2.title Dashboard
+		.inner
+			%h3 Administering your contacts
+			%p.first
+				This simple to use management system is bespoke to your organisation so your details cannot be accidentally altered by another authority. It is important for the effectiveness of the Talk to Reg system, and for the reputation of your organisation, that you keep your information up to date.
+	
+			%hr
+	
+			%h3 Contacts
+			%p
+				Under 'list' you can see the contact details for each of your categories, and edit or delete them
+			%p
+				Under new you can enter new contact details for each category in the standard list provided in the dropdown box.
+				
+			%hr
+		  
+			%h3 Accounts
+			%p
+				Here you can add or remove personnel responsible for updating your information, or change their details.
+
+			%hr
+				
+			%h3 Profile
+			%p
+				Change your email, password or name.
 
 -content_for :sidebar, partial("base/sidebar")

@@ -5,8 +5,8 @@
 #   name = shell.ask("What's your name?")
 #   shell.say name
 #
-email     = "pezholio@gmail.com"
-password  = "pooandwee"
+email     = "admin"
+password  = "password"
 
 shell.say ""
 
