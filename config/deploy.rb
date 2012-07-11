@@ -13,14 +13,14 @@ set :user, "rails"
 set :use_sudo, false
 
 # Uncomment this when I sort out a git repo
-#set :scm, :git
-#set :repository,  "git@github.com:app_user/app_name.git"
-#set :branch, 'master'
-#set :git_shallow_clone, 1
+set :scm, :git
+set :repository,  "git@github.com:pezholio/TalktoReg.git"
+set :branch, 'master'
+set :git_shallow_clone, 1
 
-set :repository, "."
-set :scm, :none
-set :deploy_via, :copy
+#set :repository, "."
+#set :scm, :none
+#set :deploy_via, :copy
 
 role :web, domain
 role :app, domain
