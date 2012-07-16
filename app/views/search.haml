@@ -1,25 +1,69 @@
-.hero-unit
-	= image_tag 'people.png', :alt => ''
-	- if @councils.include? 'county'
-		%h2= "Your councils are #{@councils["county"]["name"]} and #{@councils["council"]["name"]}"
-	- else
-		%h2= "Your council is #{@councils["council"]["name"]}"
-	%p Choose from the topics below to find the best person to speak to:
+#content.row
+	#text
+		#councils
+			- if @councils.include? 'county'
+				%h2= "Your councils are <strong>#{@councils["county"]["name"]}</strong> and <strong>#{@councils["council"]["name"]}</strong>"
+			- else
+				%h2= "Your council is <strong>#{@councils["council"]["name"]}</strong>"
+			%p Choose from the topics below to find the best person to speak to:
 
-%dl#types
+		%dl#types.span8
+		
+			- @categories.each do |category|
+				%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}", "id" => 'collapsible'}
+					= image_tag("type#{category.id}.png", :alt => "", :id => "type")
+					= image_tag("arrowleft.png", :alt => "", :class => "arrow", :id => "larrow#{category.id}")
+					= image_tag("arrowdown.png", :alt => "", :class => "arrow", :class => "arrow", :id => "darrow#{category.id}", :style => "display: none")
+					%h3
+						= category.name
+					%p
+						= category.subtitle
+				%dd{"class" => "collapse", "id" => "q#{category.id}"}
+					%div.ddinner
+						- if @contacts[category.id].count > 0
+							- @contacts[category.id].each do |contact|
+								- @contact = contact
+								= partial 'contact'
+		
+		.span3#right
+			%form{:action => 'search', :method => 'get', :id => 'rightform'}
+				%fieldset
+					%h3
+						Enter your business postcode
+					
+					%p.form
+						%input{:type => 'text', :name => 'postcode'}
+				
+					%p#detect.hidden.form
+						%a#geo{:href => '/detect'}
+							or detect my location
+					%p.form#submit	
+						%button{:class => 'btn btn-large btn-primary', :type => 'submit'}
+							Submit
+			
+			#mobile
+				%div
+					= image_tag("mobile.png", :alt => "", :id => "mobilepic")
+					
+					%h3
+						Talk to reg mobile
+					
+					%p#now Why not try using Talk to Reg on your mobile?
+					
+					%a#mobilemore{:href => '/mobile'}
+						More information
 
-	- @categories.each do |category|
-		%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}"}
-			= image_tag("type#{category.id}.png", :alt => "", :id => "type")
-			= image_tag("arrowleft.png", :alt => "", :id => "arrow")
-			%h3
-				= category.name
-			%p
-				= category.subtitle
-		%dd{"class" => "collapse", "id" => "q#{category.id}"}
-			%div.ddinner
-				= image_tag("arrowdown.png", :alt => "", :id => "downarrow")
-				- if @contacts[category.id].count > 0
-					- @contacts[category.id].each do |contact|
-						- @contact = contact
-						= partial 'contact'
+:javascript
+	$('.collapse').on('shown', function () {
+		leftarrow = $(this).attr('id').replace('q', 'larrow');
+		downarrow = $(this).attr('id').replace('q', 'darrow');
+		$('#' + leftarrow).hide();
+		$('#' + downarrow).show();
+	});
+
+	$('.collapse').on('hide', function () {
+		leftarrow = $(this).attr('id').replace('q', 'larrow');
+		downarrow = $(this).attr('id').replace('q', 'darrow');
+		$('#' + leftarrow).show();
+		$('#' + downarrow).hide();
+	});
