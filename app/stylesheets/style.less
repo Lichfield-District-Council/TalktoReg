@@ -193,7 +193,7 @@ html {
 									color: #fff;
 									padding: 15px 15px;
 									border: none;	
-									margin: 0 !important;
+									margin: 0;
 									font-weight: bold;	
 								}
 								
@@ -229,7 +229,7 @@ html {
 						background-color: #fff;
 						.border-radius(10px);
 						float: none !important;
-						margin: 0 auto 140px auto !important;
+						margin: 0 auto 140px auto;
 						position: relative;
 						.box-shadow(0 6px 9px 6px rgba(0, 0, 0, 0.5));
 						
@@ -530,7 +530,54 @@ html {
 	}
 }
 
+@media (max-width: 979px) and (min-width: 768px) {
+	#welcome {
+		#guy {
+			left: 320px !important;
+		}
+		
+		#enter {
+			margin: 20px 0 0 -15px !important;
+		}
+		
+		#homeform {
+			h3 {
+				font-size: 1.1em !important;
+			}	
+		}
+	}
+	
+	#content {
+		#right {
+			h3 {
+				font-size: 1.1em !important;
+			}
+			
+			#now {
+				font-size: 1em !important;
+			}
+			
+			#mobilepic {
+				margin-left: 0 !important;
+			}
+		}
+		
+		#types {
+			dt {
+				p {
+					font-size: 0.85em !important;
+				}
+			}
+		}
+		
+	}
+}
+
 @media (max-width: 768px) {
+
+	#wrapper {
+		background: none !important;
+	}
 
 	.container {
 		display: block !important;
@@ -540,6 +587,31 @@ html {
 		
 		nav {
 			position: static !important;
+			display: block !important;
+			width: 100% !important;
+			margin: 0 auto !important;
+			padding: 0 !important;
+			float: none !important;
+			
+			ul {
+				padding: 0 !important;
+				margin: 0 !important;
+				width: 95% !important;
+				li {
+					width: 100%;
+					padding: 0 !important;
+					margin: 0 !important;
+					a {
+						background: transparent url(/images/navmobile.png) left center repeat-x !important;
+						font-size: 1.2em !important;
+						.border-radius(10px);
+						width: 100%;
+						padding: 10px !important;
+						margin: 0 0 10px 0 !important;
+					}
+				}
+			}
+			
 		}
 		
 		header {
@@ -556,15 +628,42 @@ html {
 			
 			#welcome {
 				margin: 10px auto;
-				padding: 0;
+				padding: 0 !important;
 				width: 95%;
+				background: transparent !important;
+				.box-shadow(0 0 0 rgba(0, 0, 0, 0.3)) !important;
 				
-				h1 {
-					font-size: 1.3em;
-					margin: 10px 0;
-					color: @secondary !important;
-					font-weight: normal !important;
+				#text {
+					background-color: #fff;
+					margin: 0 !important;
+					padding: 15px 20px;
+					.border-radius(10px);
 					
+					h1 {
+						font-size: 1.5em !important;
+						margin-bottom: 7px !important;
+					}
+				}
+				
+				#homeform {
+					margin: 10px auto !important;
+					float: none !important;
+					padding: 10px !important;
+					width: 95% !important;
+					.border-radius(10px) !important;
+					background: transparent url(/images/mobilebg.png) top left repeat-x !important;
+					height: 198px !important;
+					
+					fieldset {
+						background: none !important;
+						position: static !important;
+						text-align: center;
+						
+						h3 {
+							margin: 0 !important;
+							padding: 0 !important;
+						}
+					}
 				}
 				
 				p {
@@ -576,38 +675,55 @@ html {
 					width: 100%;
 					float: none;
 				}
+				
+				#homeform {
+					position: static !important;
+				}
 			}
 			
-			#homeform {
-				width: 95%;
-				margin: 10px auto;
+			#content {
+				margin: 0 auto !important;
 			}
+			
+			#councils {
+				margin-bottom: 10px !important;
+				h2 {
+					line-height: 1.3em !important;
+					margin-bottom: 10px !important;
+					font-size: 1.7em !important;
+				}
+			}
+			
 			#types {
 				margin: 20px 5px !important;
 				padding: 0;
+				width: 95% !important;
 				
 				dt {
+					margin: 0 auto !important;
 					padding: 0 !important;
-					width: 100%;
-					margin-left: 0;
-					
-					#type {
-						display: none;
-					}
 				
 					h3 {
 						line-height: 18px;
-						padding: 5px 10px;
-						margin-right: 30px !important;
+						padding: 10px;
+						margin-left: 60px !important;
+						font-size: 1.1em !important;
 					}
+					
 					p {
 						display: none;
 					}
+					
+					#type {
+						left: -2px !important;
+					}
+
 				}
 				
 				dd {
 					margin: 0 auto !important;
-					width: 98%;
+					width: 87% !important;
+					left: 5% !important;
 					
 					#downarrow {
 						right: 12px !important;

@@ -3,8 +3,8 @@
 		%h1 Welcome
 		%p Talk to Reg is a one-stop route guide to experts who will help your business to grow and prosper. 
 		%p From starting up a new business to helping existing businesses develop Talk to Reg is here to help. It provides contacts into government services where expert help is available in business advice, trading standards, environmental health and more.
-		%p#enter Enter your postcode below to find local authorities and government contacts that are relevant to you.
-		= image_tag("guy.png", {:id => "guy"})
+		%p#enter.hidden-phone Enter your postcode below to find local authorities and government contacts that are relevant to you.
+		= image_tag("guy.png", {:id => "guy", :class => "hidden-phone"})
 
 	
 	%form{:action => 'search', :method => 'get', :id => 'homeform', :class => 'span4'}
