@@ -55,12 +55,12 @@
 					= " | tel: 01543 308779"
 				
 				%form{:action => '/admin/sessions/create', :method => 'post' }
-					%legend
+					%h3
 						Council login:
 					%p#need
 						"Need to update your information?"
 						
 					%p#details
-						=input_tag :text, :name => 'email', :class => 'text', :placeholder => 'Username...'
-						=input_tag :password, :name => 'password', :class => 'text', :placeholder => 'Password...'
+						=input_tag :text, :name => 'email', :id => 'email', :class => 'text', :placeholder => 'Username...'
+						=input_tag :password, :name => 'password', :class => 'text', :id => 'text', :placeholder => 'Password...'
 						=submit_tag "Login", :class => 'btn-success login'
