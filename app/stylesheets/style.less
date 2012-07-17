@@ -4,6 +4,18 @@
 @secondary: #1d68a6;
 @gridGutterWidth: 25px;
 
+@media (max-height: 700px) {
+	#wrapper {
+		min-height: 700px;
+	}
+}
+
+@media (min-height: 700px) {
+	#wrapper {
+		min-height: 100%;
+	}
+}
+
 html {
 	margin: 0;
 	padding: 0;
@@ -25,7 +37,6 @@ html {
 		
 		#wrapper {
 			background: transparent url('/images/footer.png') bottom left repeat-x;
-			min-height: 100%;
 		}
 		
 		.container {
@@ -97,35 +108,10 @@ html {
 			}
 			
 			#main {
-				margin-top: 15px;
+				margin-top: 45px;
 				margin-bottom: 15px;
 				padding: 0;
-				
-				.hero-unit {
-					padding: 60px 60px 20px 60px !important;
-					margin-bottom: 0 !important;
-					min-height: 187px;
-					
-					.enter {
-						margin-top: 30px;
-					}
-				}
-				
-				.modal {
-					background-color: #fff8cc;
-					.modal-header {
-						background: transparent url('/images/footer.png') left repeat-x;
-						color: #fff;
-						.border-radius(3px);
-					}
-					
-					.close {
-						color: #fff;
-						opacity: 1;
-						font-weight: normal;
-						text-shadow: none;
-					}
-				}
+				height: 100%;
 				
 				#inner {
 					margin: 0;
@@ -135,8 +121,8 @@ html {
 						.border-radius(10px);
 						float: none !important;
 						margin: 0 auto !important;
-						position: relative;
 						.box-shadow(0 6px 9px 6px rgba(0, 0, 0, 0.5));
+						position: relative;
 						
 						#text {	
 							margin: 20px 50px 55px 20px;
@@ -579,7 +565,7 @@ html {
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
 	#wrapper {
 		background: none !important;
