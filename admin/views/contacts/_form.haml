@@ -43,13 +43,10 @@
   =f.error_message_on :howto
   ~f.text_area :howto, :class => :text_area
 
-- if @snac == "all"
-  .group
-    =f.label :snac, :caption => "Council"
-    =f.error_message_on :snac
-    =f.select :snac, :collection => Council.all, :fields => [:name, :snac], :include_blank => 'None'
-- else
-  =f.hidden_field :snac, :value => @snac
+.group
+  =f.label :snac, :caption => "Council"
+  =f.error_message_on :snac
+  =f.select :snac, :collection => @councils, :fields => [:name, :snac], :include_blank => 'None'
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button

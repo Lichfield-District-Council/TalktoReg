@@ -1,19 +1,20 @@
 Admin.controllers :contacts do
+  require 'yaml'
 
   get :index do
   	if current_account.role == "admin"
 	    @contacts = Contacts.all
 	else
-		@contacts = Contacts.where(:snac => current_account.snac)
+		@contacts = Contacts.where(:snac => YAML.load(current_account.snac))
 	end
     render 'contacts/index'
   end
 
   get :new do
   	if current_account.role == "editor"
-  		@snac = current_account.snac
+  		@councils = Council.where(:snac => YAML.load(current_account.snac))
   	else
-  		@snac = "all"
+  		@councils = Council.all
   	end
     @contacts = Contacts.new
     render 'contacts/new'
@@ -31,9 +32,9 @@ Admin.controllers :contacts do
 
   get :edit, :with => :id do
   	if current_account.role == "editor"
-  		@snac = current_account.snac
+  		@councils = Council.where(:snac => YAML.load(current_account.snac))
   	else
-  		@snac = "all"
+  		@councils = Council.all
   	end
   	@contacts = Contacts.find(params[:id])
     render 'contacts/edit'

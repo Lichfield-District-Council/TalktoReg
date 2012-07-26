@@ -4,6 +4,8 @@ class Talktoregnew < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+  
+  layout :application
 
   enable :sessions
   
