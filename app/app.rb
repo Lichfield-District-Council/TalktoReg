@@ -25,27 +25,22 @@ class Talktoregnew < Padrino::Application
 	 @categories = Categories.all
 	 @contacts = Array.new
 	 @subcategories = Array.new
+	 @count = 0
 	 
 	 @categories.each do |category|
 	 	contacts = Contacts.where(:category_id => category.id, :subcategory_id => nil, :snac => @councils["council"]["id"])
 	 	
-	 	@contacts[category.id] = Array.new
-	 	
-	 	contacts.each do |contact|
-	 		if contact.name.length == 0
-	 			contact.name = "Contact"
-	 		end
-			@contacts[category.id] << contact
+	 	if contacts.count > 0
+		 	@contacts[category.id] = Array.new
+		 	@count += 1
+		 	
+		 	contacts.each do |contact|
+		 		if contact.name.length == 0
+		 			contact.name = "Contact"
+		 		end
+				@contacts[category.id] << contact
+		 	end
 	 	end
-
-	 	subcategories = Subcategory.where(:category_id => category.id, :snac => @councils["council"]["id"])
-	 	
-	 	@subcategories[category.id] = Array.new
-	 	
-	 	subcategories.each do |content|
-			@subcategories[category.id] << content
-	 	end
-
 	 end
   	
   	render 'search'
