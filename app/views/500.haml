@@ -1,0 +1,14 @@
+#content.row
+	#text
+		#councils
+			%h2 Sorry
+			%p Talk to Reg seems to be having issues. Please use the back button in your browser and try again.
+			%p 
+				If this keeps happening, please email
+				%a{:href => 'mailto:admin@talktoreg.co.uk'}admin@talktoreg.co.uk
+				and let us know. We'll do our best to sort it out quickly.
+			
+			%p The details of the error are:
+			
+			%pre
+				= CGI.escapeHTML(env['sinatra.error'].message)

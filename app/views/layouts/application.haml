@@ -37,22 +37,12 @@
 								Contact
 		%footer.hidden-phone
 			.span12.row
-				%ul
-					%li
-						%a{:href => "/"}
-							Home
-					%li
-						%a{:href => "/"}
-							About
-					%li
-						%a{:href => "/"}
-							Contact
 				
-				%p#contact 
-					email:
-					%a{:href => "mailto:info@talktoreg.co.uk"}
-						info@talktoreg.co.uk
-					= " | tel: 01543 308779"
+				#supporters
+					%p Supported by:
+					= image_tag("betterbusiness.png", {:id => "betterbusiness", :class => 'hidden-phone hidden-tablet', :alt => "Better business for all"})
+					= image_tag("lep.png", {:id => "lep", :class => 'hidden-phone hidden-tablet', :alt => "Greater Birmingham and Solihull Local Enterprise Partnership"})
+					= image_tag("ldc.png", {:id => "ldc", :class => 'hidden-phone hidden-tablet', :alt => "Lichfield District Council"})
 				
 				%form{:action => '/admin/sessions/create', :method => 'post' }
 					%h3

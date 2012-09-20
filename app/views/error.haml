@@ -1,0 +1,15 @@
+#content.row
+	#text
+		#councils
+			%h2 Sorry
+			%p Your postcode '#{@postcode}' cannot be found.
+			%p Please try again.		
+			%form{:action => 'search', :method => 'get', :id => 'againform', :class => 'form-inline'}
+				%fieldset
+					
+					%p.form
+						%label{:for => 'postcode'}
+							Postcode
+						%input{:type => 'text', :name => 'postcode', :id => 'postcode'}
+						%button{:class => 'btn', :type => 'submit'}
+							Go!

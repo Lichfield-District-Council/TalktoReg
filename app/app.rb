@@ -9,6 +9,17 @@ class Talktoregnew < Padrino::Application
 
   enable :sessions
   
+  disable :raise_errors
+  disable :show_exceptions
+  
+  not_found do 
+  	render '404', :layout => :application
+  end
+  
+  error do
+  	render '500', :layout => :application
+  end
+  
   get "/" do
   	render 'index'
   end
@@ -22,28 +33,36 @@ class Talktoregnew < Padrino::Application
 	 	@councils = Mapit.GetLatlng(params[:lat], params[:lng])
 	 end
 	 
-	 @categories = Categories.all
-	 @contacts = Array.new
-	 @subcategories = Array.new
-	 @count = 0
-	 
-	 @categories.each do |category|
-	 	contacts = Contacts.where(:category_id => category.id, :subcategory_id => nil, :snac => @councils["council"]["id"])
+	 if @councils["error"]
+	 	@postcode = params[:postcode]
+	 	render 'error'
 	 	
-	 	if contacts.count > 0
-		 	@contacts[category.id] = Array.new
-		 	@count += 1
+	 else
+	 
+		 @categories = Categories.all
+		 @contacts = Array.new
+		 @subcategories = Array.new
+		 @count = 0
+		 
+		 @categories.each do |category|
+		 	contacts = Contacts.where(:category_id => category.id, :subcategory_id => nil, :snac => @councils["council"]["id"])
 		 	
-		 	contacts.each do |contact|
-		 		if contact.name.length == 0
-		 			contact.name = "Contact"
-		 		end
-				@contacts[category.id] << contact
+		 	if contacts.count > 0
+			 	@contacts[category.id] = Array.new
+			 	@count += 1
+			 	
+			 	contacts.each do |contact|
+			 		if contact.name.length == 0
+			 			contact.name = "Contact"
+			 		end
+					@contacts[category.id] << contact
+			 	end
 		 	end
-	 	end
-	 end
+		 end
+	  	
+	  	render 'search'
   	
-  	render 'search'
+  	end
   end
 
   ##

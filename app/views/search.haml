@@ -72,12 +72,6 @@
 	#content.row
 		#text
 			#councils
-				- if @councils.include? 'county'
-					%h2= "Your councils are <strong>#{@councils["county"]["name"]}</strong> and <strong>#{@councils["council"]["name"]}</strong>"
-				- else
-					%h2= "Your council is <strong>#{@councils["council"]["name"]}</strong>"			
-				%p
-					%strong
-						Sorry, your council details are currently not listed on Talk to Reg
-				
+				%h2 Sorry, your council details are currently not listed on Talk to Reg	
+					
 				%p Please keep checking back, as we add new councils every day

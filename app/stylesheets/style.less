@@ -4,6 +4,15 @@
 @secondary: #1d68a6;
 @gridGutterWidth: 25px;
 
+.full-border-radius(@topleft: 0px, @topright: 0px, @bottomleft: 0px, @bottomright: 0px) {
+	-moz-border-radius-topleft: @topleft;
+	-moz-border-radius-topright: @topright;
+	-moz-border-radius-bottomright: @bottomright;
+	-moz-border-radius-bottomleft: @bottomleft;
+	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
+}
+
 @media (max-height: 700px) {
 	#wrapper {
 		min-height: 700px;
@@ -63,7 +72,8 @@ html {
 							color: #fff;
 							font-weight: bold;
 							font-size: 1.1em;
-							background: transparent url(/images/nav.png) left bottom no-repeat;
+							background: transparent url(/images/sprite.png) no-repeat;
+							background-position: -10px -945px;
 						}
 						
 						a:focus, a:hover, a:active {
@@ -88,7 +98,8 @@ html {
 						display: block;
 						width: 242px;
 						height: 91px;
-						background: transparent url(/images/logo.png) no-repeat;
+						background: transparent url(/images/sprite.png) no-repeat;
+						background-position: -10px -10px;
 					}
 				
 				}
@@ -152,7 +163,8 @@ html {
 								color: @secondary;
 								font-size: 1.4em;
 								font-style: italic;
-								background: transparent url(/images/bubble.png) center no-repeat;
+								background: transparent url(/images/sprite.png) no-repeat;
+								background-position: -10px -121px;
 								padding: 20px 20px;
 								margin: 20px 0 0 30px;
 							}
@@ -162,7 +174,8 @@ html {
 						#homeform {
 							border: none;
 							height: 254px;
-							background: transparent url(/images/homesearch.png) right top no-repeat;
+							background: transparent url(/images/sprite.png) no-repeat;
+							background-position: -440px -256px;
 							position: absolute;
 							right: -31px;
 							top: 60px;
@@ -170,7 +183,8 @@ html {
 							fieldset {
 								border: none !important;
 								padding: 0 7px;
-								background: transparent url(/images/homeadend.png) left top no-repeat;
+								background: transparent url(/images/sprite.png) left top no-repeat;
+								background-position: -10px -674px;
 								position: absolute;
 								left: -31px;
 								height: 254px;
@@ -239,6 +253,13 @@ html {
 								strong {
 									color: #ffa324;
 									font-weight: normal;
+								}
+							}
+							
+							#againform {
+								margin: 17px 0;
+								input {
+									margin: 0 7px !important;
 								}
 							}
 							
@@ -465,13 +486,31 @@ html {
 					}
 				}
 				
-				p#contact {
-					color: #fff;
+				#supporters {
+					background-color: #fff;
 					position: absolute;
 					left: 0;
-					bottom: 10px;
+					bottom: 0;
 					padding: 0;
 					margin: 0;
+					padding: 10px 0;
+					.full-border-radius(10px, 10px, 0, 0);
+					
+					p {
+						margin: 0 15px;
+						font-size: 0.9em;
+						font-weight: bold;
+						color: @secondary;
+					}
+					
+					img {
+						float: left;
+						margin: 0 25px;	
+					}
+					
+					#betterbusiness, #ldc {
+						margin-top: 10px;
+					}
 				}
 				
 				form {
@@ -479,7 +518,8 @@ html {
 					height: 124px;
 					position: absolute;
 					right: 0;
-					background: transparent url(/images/update.png) center no-repeat;
+					background: transparent url(/images/sprite.png) no-repeat;
+					background-position: -10px -530px;
 					bottom: 0;
 					margin: 0;
 					
