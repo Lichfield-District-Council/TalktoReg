@@ -1,0 +1,10 @@
+json.categories(@categories) do |cat|
+	json.name cat.name
+	json.contacts(@contacts[cat.id]) do |contact|
+		json.name contact.name
+		json.tel contact.tel
+		json.address contact.address
+		json.email contact.email
+		json.website contact.website
+	end
+end

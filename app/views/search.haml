@@ -11,20 +11,19 @@
 			%dl#types.span8
 			
 				- @categories.each do |category|
-					- unless @contacts[category.id].nil?
-						%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}", "id" => 'collapsible'}
-							= image_tag("type#{category.id}.png", :alt => "", :id => "type")
-							= image_tag("arrowleft.png", :alt => "", :class => "arrow", :id => "larrow#{category.id}")
-							= image_tag("arrowdown.png", :alt => "", :class => "arrow", :class => "arrow", :id => "darrow#{category.id}", :style => "display: none")
-							%h3
-								= category.name
-							%p
-								= category.subtitle
-						%dd{"class" => "collapse", "id" => "q#{category.id}"}
-							%div.ddinner						
-								- @contacts[category.id].each do |contact|
-									- @contact = contact
-									= partial 'contact'
+					%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}", "id" => 'collapsible'}
+						= image_tag("type#{category.id}.png", :alt => "", :id => "type")
+						= image_tag("arrowleft.png", :alt => "", :class => "arrow", :id => "larrow#{category.id}")
+						= image_tag("arrowdown.png", :alt => "", :class => "arrow", :class => "arrow", :id => "darrow#{category.id}", :style => "display: none")
+						%h3
+							= category.name
+						%p
+							= category.subtitle
+					%dd{"class" => "collapse", "id" => "q#{category.id}"}
+						%div.ddinner						
+							- @contacts[category.id].each do |contact|
+								- @contact = contact
+								= partial 'contact'
 			
 			.span3#right.hidden-phone
 				%form{:action => 'search', :method => 'get', :id => 'rightform'}

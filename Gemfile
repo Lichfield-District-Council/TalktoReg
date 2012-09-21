@@ -3,6 +3,7 @@ source :rubygems
 gem 'weary'
 gem 'httparty'
 gem 'json'
+gem 'jsonify'
 
 # Server requirements
 # gem 'thin' # or mongrel

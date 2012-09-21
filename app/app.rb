@@ -24,7 +24,7 @@ class Talktoregnew < Padrino::Application
   	render 'index'
   end
   
-  get "/search" do
+  get "/search", :provides => [:html, :json, :xml] do
   	require 'mapit'
   	
   	 if params[:postcode]
@@ -39,15 +39,17 @@ class Talktoregnew < Padrino::Application
 	 	
 	 else
 	 
-		 @categories = Categories.all
+		 allcats = Categories.all
+		 @categories = []
 		 @contacts = Array.new
 		 @subcategories = Array.new
 		 @count = 0
 		 
-		 @categories.each do |category|
+		 allcats.each do |category|
 		 	contacts = Contacts.where(:category_id => category.id, :subcategory_id => nil, :snac => @councils["council"]["id"])
 		 	
 		 	if contacts.count > 0
+		 		@categories << category
 			 	@contacts[category.id] = Array.new
 			 	@count += 1
 			 	
@@ -59,8 +61,15 @@ class Talktoregnew < Padrino::Application
 			 	end
 		 	end
 		 end
-	  	
-	  	render 'search'
+		 
+	  	case content_type
+			when :html then
+				render 'search.haml'
+			when :json then
+				render 'search.jsonify'
+			when :xml then
+				render 'search.builder'
+			end
   	
   	end
   end
