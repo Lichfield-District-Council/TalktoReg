@@ -24,6 +24,14 @@ class Talktoregnew < Padrino::Application
   	render 'index'
   end
   
+  get "/about" do
+  	render 'about'
+  end
+  
+  get "/contact" do
+  	render 'contact'
+  end
+  
   get "/search", :provides => [:html, :json, :xml] do
   	require 'mapit'
   	
