@@ -72,7 +72,7 @@ class Talktoregnew < Padrino::Application
 		 
 	  	case content_type
 			when :html then
-				render 'search.haml', :layout => :application2
+				render 'search.haml'
 			when :json then
 				render 'search.jsonify'
 			when :xml then
