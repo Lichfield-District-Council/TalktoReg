@@ -1,6 +1,28 @@
 #content.row
 	#text
 		#page
-			%h2 Sorry, your council details are currently not listed on Talk to Reg	
-					
-			%p Please keep checking back, as we add new councils every day
+			
+			- if @councils.include? 'county'
+				%h2= "Sorry, council details for <strong>#{@councils["county"]["name"]}</strong> and <strong>#{@councils["council"]["name"]}</strong> are currently not listed on Talk to Reg"
+				%p You can, however, contact the councils using the details below:
+			- else
+				%h2= "Sorry, council details for <strong>#{@councils["council"]["name"]}</strong> are currently not listed on Talk to Reg"
+				
+				%p You can, however, contact the council using the details below:
+			
+			- if @councils.include? 'county'
+				
+				%h3= @councils["county"]["name"]
+				
+				- @council = @councils["county"]
+				= partial 'council'
+				
+				%h3= @councils["council"]["name"]
+				
+				- @council = @councils["council"]
+				= partial 'council'
+								
+			- else
+
+				- @council = @councils["council"]
+				= partial 'council'

@@ -63,6 +63,20 @@ class Talktoregnew < Padrino::Application
 		 @contacts = Array.new
 		 @subcategories = Array.new
 		 @count = 0
+
+	     councildetails = Council.find_by_snac(@councils["council"]["id"])
+	 	 @councils["council"]["email"] = councildetails.email
+	 	 @councils["council"]["tel"] = councildetails.tel
+	 	 @councils["council"]["website"] = councildetails.website
+	 	 @councils["council"]["contacturl"] = councildetails.contacturl
+		 
+		 if @councils.include? 'county'
+		 	countydetails = Council.find_by_snac(@councils["county"]["id"])
+		 	@councils["county"]["email"] = countydetails.email
+		 	@councils["county"]["tel"] = countydetails.tel
+		 	@councils["county"]["website"] = countydetails.website
+		 	@councils["county"]["contacturl"] = countydetails.contacturl
+		 end
 		 
 		 allcats.each do |category|
 		 	contacts = Contacts.where(:category_id => category.id, :subcategory_id => nil, :snac => @councils["council"]["id"])

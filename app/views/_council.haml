@@ -1,0 +1,14 @@
+- unless @council["tel"].nil?
+	%p
+		%strong Telephone
+		= @council["tel"]
+
+- unless @council["email"].nil?
+	%p
+		%strong Email
+		= @council["email"]
+
+- unless @council["website"].nil?
+	%p
+		%strong Website
+		= link_to(@council["website"], @council["website"])
