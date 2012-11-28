@@ -21,15 +21,26 @@ class Talktoregnew < Padrino::Application
   end
   
   get "/" do
-  	render 'index'
+  	render 'index', :layout => :page
   end
   
   get "/about" do
+  	snacs = Contacts.select('DISTINCT snac')
+  	@councils = []
+  	
+  	snacs.each do |snac|
+  		@councils << Council.find_by_snac(snac.snac)
+  	end
+  	
   	render 'about'
   end
   
   get "/contact" do
-  	render 'contact'
+  	render 'contact', :layout => :page
+  end
+  
+  get "/mobile" do
+  	render 'mobile', :layout => :page
   end
   
   get "/search", :provides => [:html, :json, :xml] do
@@ -72,13 +83,16 @@ class Talktoregnew < Padrino::Application
 		 
 	  	case content_type
 			when :html then
-				render 'search.haml'
+				if @count > 0
+					render 'search.haml'
+				else
+					render 'sorry.haml', :layout => :page
+				end
 			when :json then
 				render 'search.jsonify'
 			when :xml then
 				render 'search.builder'
 			end
-  	
   	end
   end
 

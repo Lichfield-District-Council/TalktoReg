@@ -1,76 +1,68 @@
-- if @count > 0
-	#content.row
-		#text
-			#councils
-				- if @councils.include? 'county'
-					%h2= "Your councils are <strong>#{@councils["county"]["name"]}</strong> and <strong>#{@councils["council"]["name"]}</strong>"
-				- else
-					%h2= "Your council is <strong>#{@councils["council"]["name"]}</strong>"
-				%p Choose from the topics below to find the best person to speak to:
-	
-			%dl#types.span8
-			
-				- @categories.each do |category|
-					%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}", "id" => 'collapsible'}
-						= image_tag("type#{category.id}.png", :alt => "", :id => "type")
-						= image_tag("arrowleft.png", :alt => "", :class => "arrow", :id => "larrow#{category.id}")
-						= image_tag("arrowdown.png", :alt => "", :class => "arrow", :class => "arrow", :id => "darrow#{category.id}", :style => "display: none")
-						%h3
-							= category.name
-						%p
-							= category.subtitle
-					%dd{"class" => "collapse", "id" => "q#{category.id}"}
-						%div.ddinner						
-							- @contacts[category.id].each do |contact|
-								- @contact = contact
-								= partial 'contact'
-			
-			.span3#right.hidden-phone
-				%form{:action => 'search', :method => 'get', :id => 'rightform'}
-					%fieldset
-						%h3
-							Enter your business postcode
-						
-						%p.form
-							%input{:type => 'text', :name => 'postcode'}
+#content.row
+	#text
+		#councils
+			- if @councils.include? 'county'
+				%h2= "Your councils are <strong>#{@councils["county"]["name"]}</strong> and <strong>#{@councils["council"]["name"]}</strong>"
+			- else
+				%h2= "Your council is <strong>#{@councils["council"]["name"]}</strong>"
+			%p Choose from the topics below to find the best person to speak to:
+
+		%dl#types.span8
+		
+			- @categories.each do |category|
+				%dt{"data-target" => "#q#{category.id}", "data-toggle" => "collapse", "class" => "type#{category.id}", "id" => 'collapsible'}
+					= image_tag("type#{category.id}.png", :alt => "", :id => "type")
+					= image_tag("arrowleft.png", :alt => "", :class => "arrow", :id => "larrow#{category.id}")
+					= image_tag("arrowdown.png", :alt => "", :class => "arrow", :class => "arrow", :id => "darrow#{category.id}", :style => "display: none")
+					%h3
+						= category.name
+					%p
+						= category.subtitle
+				%dd{"class" => "collapse", "id" => "q#{category.id}"}
+					%div.ddinner						
+						- @contacts[category.id].each do |contact|
+							- @contact = contact
+							= partial 'contact'
+		
+		.span3#right.hidden-phone
+			%form{:action => 'search', :method => 'get', :id => 'rightform'}
+				%fieldset
+					%h3
+						Enter your business postcode
 					
-						%p#detect.hidden.form
-							%a#geo{:href => '/detect'}
-								or detect my location
-						%p.form#submit	
-							%button{:class => 'btn btn-large btn-primary', :type => 'submit'}
-								Submit
+					%p.form
+						%input{:type => 'text', :name => 'postcode'}
 				
-				#mobile
-					%div
-						= image_tag("mobile.png", :alt => "", :id => "mobilepic")
-						
-						%h3
-							Talk to reg mobile
-						
-						%p#now Why not try using Talk to Reg on your mobile?
-						
-						%a#mobilemore{:href => '/mobile'}
-							More information
-	
-	:javascript
-		$('.collapse').on('shown', function () {
-			leftarrow = $(this).attr('id').replace('q', 'larrow');
-			downarrow = $(this).attr('id').replace('q', 'darrow');
-			$('#' + leftarrow).hide();
-			$('#' + downarrow).show();
-		});
-	
-		$('.collapse').on('hide', function () {
-			leftarrow = $(this).attr('id').replace('q', 'larrow');
-			downarrow = $(this).attr('id').replace('q', 'darrow');
-			$('#' + leftarrow).show();
-			$('#' + downarrow).hide();
-		});
-- else
-	#content.row
-		#text
-			#councils
-				%h2 Sorry, your council details are currently not listed on Talk to Reg	
+					%p#detect.hidden.form
+						%a#geo{:href => '/detect'}
+							or detect my location
+					%p.form#submit	
+						%button{:class => 'btn btn-large btn-primary', :type => 'submit'}
+							Submit
+			
+			#mobile
+				%div
+					= image_tag("mobile.png", :alt => "", :id => "mobilepic")
 					
-				%p Please keep checking back, as we add new councils every day
+					%h3
+						Talk to reg mobile
+					
+					%p#now Why not try using Talk to Reg on your mobile?
+					
+					%a#mobilemore{:href => '/mobile'}
+						More information
+
+:javascript
+	$('.collapse').on('shown', function () {
+		leftarrow = $(this).attr('id').replace('q', 'larrow');
+		downarrow = $(this).attr('id').replace('q', 'darrow');
+		$('#' + leftarrow).hide();
+		$('#' + downarrow).show();
+	});
+
+	$('.collapse').on('hide', function () {
+		leftarrow = $(this).attr('id').replace('q', 'larrow');
+		downarrow = $(this).attr('id').replace('q', 'darrow');
+		$('#' + leftarrow).show();
+		$('#' + downarrow).hide();
+	});

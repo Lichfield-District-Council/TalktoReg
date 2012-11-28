@@ -4,6 +4,7 @@ gem 'weary'
 gem 'httparty'
 gem 'json'
 gem 'jsonify'
+gem 'bluecloth'
 
 # Server requirements
 # gem 'thin' # or mongrel
