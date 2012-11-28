@@ -6,7 +6,7 @@
 - unless @council["email"].nil?
 	%p
 		%strong Email
-		= @council["email"]
+		= mail_to(@council["email"])
 
 - unless @council["website"].nil?
 	%p
