@@ -35,22 +35,33 @@
 						%li
 							%a{:href => "/contact"}
 								Contact
-	%footer.row.hidden-phone
-		.span12.row
-			
-			#supporters
-				%p Supported by:
-				= image_tag("betterbusiness.png", {:id => "betterbusiness", :class => 'hidden-phone hidden-tablet', :alt => "Better business for all"})
-				= image_tag("lep.png", {:id => "lep", :class => 'hidden-phone hidden-tablet', :alt => "Greater Birmingham and Solihull Local Enterprise Partnership"})
-				= image_tag("ldc.png", {:id => "ldc", :class => 'hidden-phone hidden-tablet', :alt => "Lichfield District Council"})
-			
-			%form{:action => '/admin/sessions/create', :method => 'post' }
-				%h3
-					Council login:
-				%p#need
-					"Need to update your information?"
-					
-				%p#details
-					=input_tag :text, :name => 'email', :id => 'email', :class => 'text', :placeholder => 'Username...'
-					=input_tag :password, :name => 'password', :class => 'text', :id => 'text', :placeholder => 'Password...'
-					=submit_tag "Login", :class => 'btn-success login'
+		%footer.row.hidden-phone
+			.span12.row
+				
+				#supporters
+					%p Supported by:
+					= image_tag("betterbusiness.png", {:id => "betterbusiness", :class => 'hidden-phone hidden-tablet', :alt => "Better business for all"})
+					= image_tag("lep.png", {:id => "lep", :class => 'hidden-phone hidden-tablet', :alt => "Greater Birmingham and Solihull Local Enterprise Partnership"})
+					= image_tag("ldc.png", {:id => "ldc", :class => 'hidden-phone hidden-tablet', :alt => "Lichfield District Council"})
+				
+				%form{:action => '/admin/sessions/create', :method => 'post' }
+					%h3
+						Council login:
+					%p#need
+						"Need to update your information?"
+						
+					%p#details
+						=input_tag :text, :name => 'email', :id => 'email', :class => 'text', :placeholder => 'Username...'
+						=input_tag :password, :name => 'password', :class => 'text', :id => 'text', :placeholder => 'Password...'
+						=submit_tag "Login", :class => 'btn-success login'
+
+	:javascript
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-511839-36']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
