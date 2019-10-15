@@ -39,7 +39,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.2.0)
-    multi_xml (0.4.1)
+    multi_xml (0.6.0)
     mysql2 (0.3.11)
     oauth (0.4.5)
     padrino (0.10.6)
